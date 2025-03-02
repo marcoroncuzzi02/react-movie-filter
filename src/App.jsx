@@ -15,11 +15,11 @@ if (!selectedGenre) {
   setMoviesList(movies);
   return
 }
-const filter = movies.filter(movie => 
+const filteredMovies = movies.filter(movie => 
   movie.genre.toLowerCase() === selectedGenre.toLowerCase()
 );
 
-setMoviesList(filter);
+setMoviesList(filteredMovies);
 }
 
 
