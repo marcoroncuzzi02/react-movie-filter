@@ -6,6 +6,11 @@ function App() {
 const [moviesList, setMoviesList] = useState(movies)
 const [selectedGenre, setSelectedGenre] = useState()
 
+if (!selectedGenre) {
+  setMoviesList(movies);
+  return
+}
+
 
 
 
@@ -20,11 +25,19 @@ const [selectedGenre, setSelectedGenre] = useState()
         </li>
       ) ) }
       </ul>
-      <form 
-      onSubmit={filter}>
-        <select>
-
+      <form onSubmit={filter}>
+        <select 
+          value={selectedGenre} 
+          onChange={(e) => setSelectedGenre(e.target.value)}
+        >
+          <option value="">Tutti i generi</option>
+          <option value="Azione">Azione</option>
+          <option value="Commedia">Commedia</option>
+          <option value="Drammatico">Drammatico</option>
+          <option value="Fantascienza">Fantascienza</option>
+          <option value="Horror">Horror</option>
         </select>
+        <button type="submit">Filtra</button>
       </form>
     </>
    
