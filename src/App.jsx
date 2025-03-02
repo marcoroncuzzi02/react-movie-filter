@@ -6,13 +6,21 @@ function App() {
 const [moviesList, setMoviesList] = useState(movies)
 const [selectedGenre, setSelectedGenre] = useState()
 
+
+const filter = (e) => {
+  
+  e.preventDefault();
+
 if (!selectedGenre) {
   setMoviesList(movies);
   return
 }
+const filter = movies.filter(movie => 
+  movie.genre.toLowerCase() === selectedGenre.toLowerCase()
+);
 
-
-
+setMoviesList(filter);
+}
 
 
   return(
@@ -32,10 +40,9 @@ if (!selectedGenre) {
         >
           <option value="">Tutti i generi</option>
           <option value="Azione">Azione</option>
-          <option value="Commedia">Commedia</option>
-          <option value="Drammatico">Drammatico</option>
+          <option value="Romantico">Romantico</option>
           <option value="Fantascienza">Fantascienza</option>
-          <option value="Horror">Horror</option>
+          <option value="Thriller">Thriller</option>
         </select>
         <button type="submit">Filtra</button>
       </form>
